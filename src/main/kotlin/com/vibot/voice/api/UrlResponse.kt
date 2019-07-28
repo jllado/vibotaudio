@@ -1,3 +1,5 @@
 package com.vibot.voice.api
 
-data class UrlResponse(val url: String)
+import java.io.Serializable
+
+data class UrlResponse(val url: String): Serializable

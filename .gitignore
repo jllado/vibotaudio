@@ -1,6 +1,7 @@
 HELP.md
 .gradle
 /build/
+/audios/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###

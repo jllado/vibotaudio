@@ -1,3 +1,5 @@
 package com.vibot.voice.api
 
-data class AudioRequest(val text: String?)
+import java.io.Serializable
+
+data class AudioRequest(val text: String): Serializable
