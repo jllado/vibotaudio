@@ -1,0 +1,6 @@
+FROM adoptopenjdk/openjdk12:x86_64-ubuntu-jdk-12.0.2_10
+RUN apt-get update
+RUN apt-get install -y libttspico0 libttspico-utils libttspico-data
+WORKDIR /app
+COPY ./ /app
+RUN ./gradlew build
