@@ -5,7 +5,8 @@ import org.springframework.stereotype.Service
 import java.io.File
 
 
-private const val maxChunkSize = 5000
+private const val chunkSize = 30000
+
 @Service
 class AudioBuilder @Autowired constructor(
         private val commandRunner: CommandRunner
@@ -14,11 +15,11 @@ class AudioBuilder @Autowired constructor(
     fun build(id: String, text: String) {
         val directory = File("audios")
         directory.mkdir()
-        if (text.length <= maxChunkSize) {
+        if (text.length <= chunkSize) {
             text.toAudio(id, directory)
             return
         }
-        val textChunks = text.chunked(maxChunkSize)
+        val textChunks = text.chunked(chunkSize)
         textChunks.forEachIndexed { index, textChunk ->  textChunk.toAudio(buildChunkId(id, index), directory)}
         mergeChunks(textChunks.size, id, directory)
     }
