@@ -1,6 +1,7 @@
 version: '3'
 services:
   vibot-voice:
+    image: jllado-server:5000/vibot/vibot-voice:latest
     container_name: vibot-voice
     build: .
     ports:
