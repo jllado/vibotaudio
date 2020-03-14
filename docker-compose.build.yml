@@ -1,0 +1,13 @@
+version: '3'
+services:
+  vibot-voice-build:
+    container_name: vibot-voice-build
+    volumes:
+      - ${APP_PATH:-./}:/app
+      - vibot-voice-build_gradle_dist:/root/.gradle
+    build:
+      context: .
+      dockerfile: Dockerfile-build
+volumes:
+  vibot-voice-build_gradle_dist:
+    driver: local
