@@ -16,5 +16,20 @@ pipeline {
         always {
             junit 'build/test-results/**/*.xml'
         }
+        success {
+            script {
+                sh 'curl -s ' + '"http://172.17.0.1:50000/notification/${env.JOB_NAME} success"'
+            }
+        }
+        unstable {
+            script {
+                sh 'curl -s ' + '"http://172.17.0.1:50000/notification/${env.JOB_NAME} unstable"'
+            }
+        }
+        failure {
+            script {
+                sh 'curl -s ' + '"http://172.17.0.1:50000/notification/${env.JOB_NAME} failure"'
+            }
+        }
     }
 }
