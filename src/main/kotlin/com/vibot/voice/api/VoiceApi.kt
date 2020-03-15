@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
-import java.awt.PageAttributes
 import java.io.File
 import java.io.FileInputStream
 
 @RestController
 class VoiceApi @Autowired constructor(
-        private val service: VoiceService
-){
+    private val service: VoiceService
+) {
 
     @PostMapping("/buildAudio")
     fun buildAudio(@RequestBody request: AudioRequest): UrlResponse {

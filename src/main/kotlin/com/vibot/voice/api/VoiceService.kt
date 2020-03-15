@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class VoiceService @Autowired constructor(
-        private val builder: AudioBuilder,
-        private val idBuilder: AudioIdBuilder
-){
+    private val builder: AudioBuilder,
+    private val idBuilder: AudioIdBuilder
+) {
 
     fun buildAudio(request: AudioRequest): UrlResponse {
         val id = idBuilder.build()

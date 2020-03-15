@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.io.File
 import java.nio.file.Files
 
-
 @RunWith(SpringRunner::class)
 @SpringBootTest
 @AutoConfigureMockMvc
