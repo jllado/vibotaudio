@@ -4,13 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.io.File
 
-
 private const val chunkSize = 30000
 
 @Service
 class AudioBuilder @Autowired constructor(
-        private val commandRunner: CommandRunner
-){
+    private val commandRunner: CommandRunner
+) {
 
     fun build(id: String, text: String) {
         val directory = File("audios")
@@ -20,7 +19,7 @@ class AudioBuilder @Autowired constructor(
             return
         }
         val textChunks = text.chunked(chunkSize)
-        textChunks.forEachIndexed { index, textChunk ->  textChunk.toAudio(buildChunkId(id, index), directory)}
+        textChunks.forEachIndexed { index, textChunk -> textChunk.toAudio(buildChunkId(id, index), directory) }
         mergeChunks(textChunks.size, id, directory)
     }
 
@@ -43,4 +42,3 @@ class AudioBuilder @Autowired constructor(
 
     private fun buildChunkId(id: String, index: Int) = "$id-$index"
 }
-
