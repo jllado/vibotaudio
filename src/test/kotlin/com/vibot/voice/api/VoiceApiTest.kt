@@ -21,7 +21,7 @@ class VoiceApiTest {
     @Test
     fun `given text should return audio url`() {
         val request = AudioRequest("any test")
-        val urlResponse = UrlResponse("http://audio.url")
+        val urlResponse = UrlResponse("http://www.audio.url")
         doReturn(urlResponse).`when`(service).buildAudio(request)
 
         assertThat(api.buildAudio(request), `is`(urlResponse))

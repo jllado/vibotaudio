@@ -18,17 +18,17 @@ pipeline {
         }
         success {
             script {
-                sh 'curl -s ' + '"http://172.17.0.1:50000/notification/${env.JOB_NAME}%20success"'
+                sh "curl -X POST -H \"Content-Type: application/json\" -d '{\"text\": \"${env.JOB_NAME} SUCCESS\"}' http://172.17.0.1:50000/notification"
             }
         }
         unstable {
             script {
-                sh 'curl -s ' + '"http://172.17.0.1:50000/notification/${env.JOB_NAME}%20unstable"'
+                sh "curl -X POST -H \"Content-Type: application/json\" -d '{\"text\": \"${env.JOB_NAME} UNSTABLE\"}' http://172.17.0.1:50000/notification"
             }
         }
         failure {
             script {
-                sh 'curl -s ' + '"http://172.17.0.1:50000/notification/${env.JOB_NAME}%20failure"'
+                sh "curl -X POST -H \"Content-Type: application/json\" -d '{\"text\": \"${env.JOB_NAME} FAILURE\"}' http://172.17.0.1:50000/notification"
             }
         }
     }
