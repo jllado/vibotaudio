@@ -1,9 +1,11 @@
 FROM adoptopenjdk/openjdk12:x86_64-ubuntu-jdk-12.0.2_10-slim
 LABEL maintainer="jllado@gmail.com"
+RUN useradd -ms /bin/bash jenkins
 RUN apt-get update
 RUN apt-get install -y libttspico0 libttspico-utils libttspico-data sox
 RUN mkdir /app
 VOLUME /app
 VOLUME /root/.gradle
+USER jenkins
 WORKDIR /app
 ENTRYPOINT ["./gradlew", "build", "--no-daemon", "-DupdateTestTimestamps=true"]
